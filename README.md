@@ -8,6 +8,11 @@ quirks, but *insert Thanos memes*
 > "You could not live with your own failure."
 > "Where did that bring you? Back to me."
 
+# Batteries
+## Spark Pytest Helper
+
+## Spark Functional Tools
+
 # Requirements
 
 - Bazel 2.0.0
