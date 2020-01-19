@@ -4,7 +4,7 @@ from typing import Any, Callable, List
 
 from cytoolz.functoolz import compose
 
-from pyspark.sql import DataFrame as SparkDataFrame
+from pyspark.sql.dataframe import DataFrame as SparkDataFrame
 
 
 def chain_transforms(
