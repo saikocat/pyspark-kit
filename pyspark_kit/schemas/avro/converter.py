@@ -21,7 +21,7 @@ class AvroSchemaConverter:
         )
         self.schema_converters = spark._jvm.org.apache.spark.sql.avro.SchemaConverters
 
-    def from_spark_schema(
+    def to_json_from_spark_schema(
         self,
         catalyst_type: Union[StructType, str],
         nullable: bool = False,
@@ -34,7 +34,10 @@ class AvroSchemaConverter:
             return str(catalyst_type)
 
         spark_schema_json = catalyst_type_to_json(catalyst_type)
-        avsc = self.schema_converters.toAvroType(
-            self.structype_from_json(spark_schema_json), nullable, record_name, namespace
+        avsc_jvm = self.schema_converters.toAvroType(
+            self.structype_from_json(spark_schema_json),
+            nullable,
+            record_name,
+            namespace,
         )
-        return str(avsc.toString())
+        return str(avsc_jvm.toString())
