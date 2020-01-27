@@ -19,29 +19,30 @@ class Log4j(object):
         message_prefix = '<' + app_name + ' ' + app_id + '>'
         self.logger = log4j.LogManager.getLogger(message_prefix)
 
-    def error(self, message):
-        """Log an error.
-
-        :param: Error message to write to log
-        :return: None
-        """
-        self.logger.error(message)
+    def trace(self, message):
+        self.logger.trace(message)
         return None
 
-    def warn(self, message):
-        """Log an warning.
-
-        :param: Error message to write to log
-        :return: None
-        """
-        self.logger.warn(message)
+    def debug(self, message):
+        self.logger.debug(message)
         return None
 
     def info(self, message):
-        """Log information.
-
-        :param: Information message to write to log
-        :return: None
-        """
         self.logger.info(message)
+        return None
+
+    def warn(self, message):
+        self.logger.warn(message)
+        return None
+
+    def error(self, message):
+        self.logger.error(message)
+        return None
+
+    def fatal(self, message):
+        self.logger.fatal(message)
+        return None
+
+    def set_level(self, level):
+        self.logger.setLevel(level)
         return None
