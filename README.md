@@ -1,5 +1,6 @@
 # pyspark-kit
-Attempt to create a sensible pyspark structure boilerplate
+Attempt to create a sensible pyspark structure boilerplate. Heavily work in
+progress so it's constantly breaking
 
 # Build Tool
 [Bazel](https://bazel.build/), was the chosen one even after agonizing pains of
@@ -12,6 +13,10 @@ quirks, but *insert Thanos memes*
 ## Spark Pytest Helper
 
 ## Spark Functional Tools
+- `chain_transforms`: compose multiple transforms on a DataFrame
+
+## Spark Patches
+- `df.transforms` API is added to follow the Scala API
 
 # Requirements
 
