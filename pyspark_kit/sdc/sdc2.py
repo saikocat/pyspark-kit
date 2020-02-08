@@ -33,10 +33,10 @@ class ScdMetadata(object):
             existing_version_col.alias(self.names.version),
         ]
 
-    def new_records_columns(self, ) -> List[Column]:
+    def new_records_columns(self) -> List[Column]:
         return [
             F.current_date().alias(self.names.valid_start_date),
-            F.to_date(F.lit(self.end_of_time_date).alias(self.names.valid_end_date),
+            F.to_date(F.lit(self.end_of_time_date)).alias(self.names.valid_end_date),
             F.lit(True).alias(self.names.is_active),
             F.lit(1).alias(self.names.version),
         ]
