@@ -1,6 +1,6 @@
 from datetime import date
 
-from pyspark_kit.sdc.id_generator import generate_sequential_ids, Hint
+from pyspark_kit.sdc import generate_sequential_ids, Hint
 
 from pyspark_kit.pytest_helper.spark_fixtures import spark, df_equals, row_to_dict
 from pyspark.sql import Column, DataFrame, functions as F

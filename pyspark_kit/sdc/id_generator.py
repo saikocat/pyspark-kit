@@ -31,9 +31,9 @@ def generate_sequential_ids(
         dataframe with sequential id as first column, and then columns from original dataframe
     """
     if hint == Hint.SINGLE_PARTITION:
-        return generate_sequential_ids_distributed(df, offset, id_col)
-    elif hint == Hint.DISTRIBUTED:
         return generate_sequential_ids_single_partition(df, offset, id_col, sortable_col)
+    elif hint == Hint.DISTRIBUTED:
+        return generate_sequential_ids_distributed(df, offset, id_col)
     else:
         return generate_sequential_ids_distributed(df, offset, id_col)
 
@@ -52,7 +52,9 @@ def generate_sequential_ids_single_partition(
     window_spec: WindowSpec = Window.orderBy(F.col(unique_id_col))
     # Generate sequential ids
     final_id_col: Column = F.lit(offset) + F.row_number().over(window_spec)
-    final_df = unique_id_df.withColumn(id_col, final_id_col).drop(unique_id_col)
+    final_df = unique_id_df.withColumn(id_col, final_id_col)
+    # drop column if it is not part of the original df
+    final_df = final_df if sortable_col else final_df.drop(unique_id_col)
     return final_df.select(F.col(id_col).cast(LongType()), *df.columns)
 
 
